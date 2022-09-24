@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Newt} from '~components/new'
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       />
       <View style={styles.view}>
         <Text style={styles.text}>Gg Ff</Text>
+        <Newt />
       </View>
     </SafeAreaView>
   );
