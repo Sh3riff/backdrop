@@ -1,17 +1,14 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import {ScreenLayout} from '~components'
 
 export const AllCats = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar
-        barStyle="dark-content"
-        // backgroundColor={backgroundStyle.backgroundColor}
-      />
+    <ScreenLayout title="All Cats">
       <View style={styles.view}>
         <Text style={styles.text}>All cats</Text>
       </View>
-    </SafeAreaView>
+    </ScreenLayout>
   );
 };
 
