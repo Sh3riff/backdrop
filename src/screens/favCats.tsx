@@ -1,6 +1,7 @@
 import React from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import {ScreenLayout, FaveCatCard, FaveCatCardHeight} from '~components';
+import {getItemLayout} from '~utils';
 
 const list = [
   {
@@ -28,13 +29,6 @@ const list = [
 
 export const FavCats = () => {
   const numberOfColums = 2;
-  const getItemLayout = (data: any, index: number) => {
-    return {
-      length: FaveCatCardHeight,
-      offset: FaveCatCardHeight * Math.floor(index / numberOfColums),
-      index,
-    };
-  };
   return (
     <ScreenLayout title="Cats I Like">
       <View style={styles.view}>
@@ -43,7 +37,7 @@ export const FavCats = () => {
           renderItem={FaveCatCard}
           showsVerticalScrollIndicator={false}
           numColumns={numberOfColums}
-          getItemLayout={getItemLayout}
+          getItemLayout={getItemLayout(FaveCatCardHeight, numberOfColums)}
           columnWrapperStyle={styles.listSpacing}
           keyExtractor={(item: any) => item.id}
         />

@@ -9,6 +9,12 @@ type ICatListItem = {
     breeds?: {name: string}[];
   };
 };
+
+const ImageLength = 40;
+const marginBottom = 20;
+
+export const CatListItemHeight = ImageLength + marginBottom;
+
 export const CatListItem = ({item}: ICatListItem) => {
   // FastImage.resizeMode.cover
   const {url, breeds} = item;
@@ -38,14 +44,15 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom,
   },
   infoArea: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   image: {
-    width: 40,
-    height: 40,
+    width: ImageLength,
+    height: ImageLength,
     borderRadius: 10,
     marginRight: 15,
   },

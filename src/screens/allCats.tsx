@@ -1,26 +1,40 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {ScreenLayout, CatListItem} from '~components';
-
-// id url breeds[0]?.name
-
-const sample = {
-  breeds: [
-    {
-      name: 'Abyssinian',
-    },
-  ],
-  id: 'rRLX_RH_o',
-  url: 'https://cdn2.thecatapi.com/images/rRLX_RH_o.jpg',
-  width: 299,
-  height: 168,
-};
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
+import {
+  ScreenLayout,
+  CatListItem,
+  CatListItemHeight,
+  ScreenLoader,
+  ListLoader,
+} from '~components';
+import {useFetchCats} from '~hook';
+import {getItemLayout} from '~utils';
 
 export const AllCats = () => {
+  const {isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage} = useFetchCats();
+
+  const loadMore = () => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
+  };
   return (
     <ScreenLayout title="All Cats">
       <View style={styles.view}>
-        <CatListItem item={sample} />
+        {isLoading ? (
+          <ScreenLoader />
+        ) : (
+          <FlatList
+            data={data?.pages?.flat()}
+            renderItem={CatListItem}
+            showsVerticalScrollIndicator={false}
+            getItemLayout={getItemLayout(CatListItemHeight)}
+            keyExtractor={(item: any) => item.id}
+            onEndReached={loadMore}
+            onEndReachedThreshold={0.6}
+            ListFooterComponent={isFetchingNextPage ? ListLoader : null}
+          />
+        )}
       </View>
     </ScreenLayout>
   );
