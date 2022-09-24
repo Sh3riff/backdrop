@@ -1,0 +1,1 @@
+export {BottomTablabel} from './bottomTabComponents'

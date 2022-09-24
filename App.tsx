@@ -1,36 +1,37 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
-import {Newt} from '~components/new'
+import { StyleSheet, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { AllCats, FavCats } from '~screens';
+import {BottomTablabel} from '~components'
+
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar
-        barStyle="dark-content"
-        // backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <View style={styles.view}>
-        <Text style={styles.text}>Gg Ff</Text>
-        <Newt />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{
+        headerShown: false
+        }}>
+        <Tab.Screen
+          name="All cats"
+          component={AllCats}
+          options={{
+            tabBarLabel: ({focused}) => <BottomTablabel label="All cats" focused={focused}/>
+          }}
+        />
+        <Tab.Screen
+          name="Cats I like"
+          component={FavCats}
+          options={{
+            tabBarLabel: ({focused}) => <BottomTablabel label="Cats I like" focused={focused}/>
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
-  view: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontFamily: 'SFProDisplay-Regular',
-    fontSize: 36,
-  }
-});
 
 export default App;
