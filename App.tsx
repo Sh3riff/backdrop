@@ -9,7 +9,7 @@ const App = () => {
         // backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={styles.view}>
-        <Text>All cats Cats I like</Text>
+        <Text style={styles.text}>Gg Ff</Text>
       </View>
     </SafeAreaView>
   );
@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text: {
+    fontFamily: 'SFProDisplay-Regular',
+    fontSize: 36,
+  }
 });
 
 export default App;
