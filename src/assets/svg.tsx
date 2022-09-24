@@ -34,3 +34,24 @@ export const BottomTabLoveIcon = (props) => (
     />
   </Svg>
 )
+
+export const LoveIcon = (props) => (
+  <Svg
+    width={18}
+    height={16}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      d="M15.63 2.458a4.124 4.124 0 0 0-5.835 0L9 3.253l-.795-.795A4.126 4.126 0 0 0 2.37 8.293l.795.795L9 14.923l5.835-5.835.795-.795a4.124 4.124 0 0 0 0-5.835Z"
+      // fill="#DE0202"
+      // stroke="#DE0202"
+      // stroke="#212227"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+)
+
