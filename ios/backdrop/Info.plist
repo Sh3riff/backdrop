@@ -54,6 +54,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFProDisplay-Regular.ttf</string>
+		<string>SFProDisplay-Semibold.ttf</string>
 	</array>
 </dict>
 </plist>

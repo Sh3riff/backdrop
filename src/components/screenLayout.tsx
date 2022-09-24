@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
       fontSize: 16,
-      fontFamily: 'SFProDisplay-Regular',
+      fontFamily: 'SFProDisplay-Semibold',
       color: '#212227'
     }
 })
