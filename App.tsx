@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AllCats, FavCats } from '~screens';
-import {BottomTablabel} from '~components'
+import {BottomTabIcon} from '~components'
 
 
 const Tab = createBottomTabNavigator();
@@ -12,20 +12,22 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{
-        headerShown: false
+        headerShown: false,
+        tabBarLabelStyle: styles.tabLabel,
+        tabBarActiveTintColor: '#212227'
         }}>
         <Tab.Screen
           name="All cats"
           component={AllCats}
           options={{
-            tabBarLabel: ({focused}) => <BottomTablabel label="All cats" focused={focused}/>
+            tabBarIcon: ({color}) => <BottomTabIcon color={color} name="cats" />
           }}
         />
         <Tab.Screen
           name="Cats I like"
           component={FavCats}
           options={{
-            tabBarLabel: ({focused}) => <BottomTablabel label="Cats I like" focused={focused}/>
+            tabBarIcon: ({color}) => <BottomTabIcon color={color} name="favs" />
           }}
         />
       </Tab.Navigator>
@@ -35,3 +37,10 @@ const App = () => {
 
 
 export default App;
+
+const styles = StyleSheet.create({
+  tabLabel: {
+    fontSize: 13,
+    fontFamily: 'SFProDisplay-Regular',
+  }
+})

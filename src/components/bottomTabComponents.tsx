@@ -1,13 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import {StyleSheet} from 'react-native';
+import {CatIcon, BottomTabLoveIcon} from '~assets/svg'
 
-export const BottomTablabel = ({label, focused}) => (
-    <Text style={[styles.tabLabel, focused && {color: '#212227'}]}>{label}</Text>
-)
-
-// tabBarIcon: ({ color, size }) => (
-            //   <MaterialCommunityIcons name="home" color={color} size={size} />
-            // ),
+type IBottomTabIcon = {
+    name: 'cats' | 'favs';
+    color: 'string'
+}
+export const BottomTabIcon = ({name, color}: IBottomTabIcon) => name === 'cats' ? <CatIcon fill={color} /> : <BottomTabLoveIcon fill={color} />
 
 const styles = StyleSheet.create({
     tabLabel: {

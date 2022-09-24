@@ -1,1 +1,1 @@
-export {BottomTablabel} from './bottomTabComponents'
+export {BottomTablabel, BottomTabIcon} from './bottomTabComponents'
