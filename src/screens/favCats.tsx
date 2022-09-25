@@ -20,8 +20,10 @@ export const FavCats = () => {
     ...data,
     name:
       catData?.find((cat: any) => cat?.id === data.image_id)?.breeds?.[0]
-        ?.name || '...',
+        ?.name || 'Unknown Breed',
   }));
+
+  // console.log('dataWithName', dataWithName[0]) // image_id || image.id
 
   const numberOfColums = 2;
 

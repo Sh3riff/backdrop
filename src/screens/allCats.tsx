@@ -20,6 +20,8 @@ export const AllCats = () => {
     }
   };
 
+  // console.log('data', data[1]) cat.id
+
   // This Component is essential to maintain a named
   // functional component in the flatlist and also
   // use hooks in the component
