@@ -1,10 +1,11 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View, useWindowDimensions, Dimensions} from 'react-native';
+import {StyleSheet, TouchableOpacity, Text, View, Dimensions} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {LoveIcon} from '~assets/svg';
 
 type ICatListItem = {
   item: {
+    name: string;
     image: {
       id: string;
       url: string;
@@ -21,7 +22,6 @@ export const FaveCatCardHeight = imageLength + textHeight + marginBottom;
 
 export const FaveCatCard = ({item}: ICatListItem) => {
   const {id, url} = item.image;
-  const name = 'Abysico';
   return (
     <TouchableOpacity style={{marginBottom}}>
       <FastImage
@@ -30,7 +30,7 @@ export const FaveCatCard = ({item}: ICatListItem) => {
         resizeMode={FastImage.resizeMode.cover}
       />
       <View style={styles.infoArea}>
-        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.name}>{item.name}</Text>
         <LoveIcon fill="#DE0202" stroke="#DE0202" />
       </View>
     </TouchableOpacity>

@@ -8,12 +8,20 @@ import {
   EmptyScreen,
   ListLoader,
 } from '~components';
-import {useFetchFavoriteCats} from '~hook';
+import {useFetchFavoriteCats, useFetchCats} from '~hook';
 import {getItemLayout} from '~utils';
 
 export const FavCats = () => {
   const {isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage} =
     useFetchFavoriteCats();
+  const {data: catData} = useFetchCats();
+
+  const dataWithName = data?.map((data: any) => ({
+    ...data,
+    name:
+      catData?.find((cat: any) => cat?.id === data.image_id)?.breeds?.[0]
+        ?.name || '...',
+  }));
 
   const numberOfColums = 2;
 
@@ -28,11 +36,11 @@ export const FavCats = () => {
   return (
     <ScreenLayout title="Cats I Like">
       <View style={styles.view}>
-        {!data || !data.length ? (
+        {!dataWithName || !dataWithName.length ? (
           <EmptyScreen />
         ) : (
           <FlatList
-            data={data}
+            data={dataWithName}
             renderItem={FaveCatCard}
             showsVerticalScrollIndicator={false}
             numColumns={numberOfColums}

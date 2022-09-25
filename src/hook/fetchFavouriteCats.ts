@@ -3,6 +3,7 @@ import axios from 'axios';
 import Config from 'react-native-config';
 
 export const useFetchFavoriteCats = (pageLimit: number = 16) => {
+  const fiveHours = 5 * 60 * 60 * 1000;
   const axiosFetchCat = ({pageParam = 0}) =>
     axios
       .get(
@@ -22,9 +23,11 @@ export const useFetchFavoriteCats = (pageLimit: number = 16) => {
       }
       return null;
     },
+    cacheTime: fiveHours,
+    staleTime: fiveHours,
   });
   return {
     ...queryValues,
-    data: queryValues.data?.pages?.flat()
+    data: queryValues.data?.pages?.flat(),
   };
 };
