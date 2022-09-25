@@ -18,6 +18,8 @@ export const FavCats = () => {
   const favList = data?.pages?.flat();
   const numberOfColums = 2;
 
+  console.log('favList', favList)
+
   const loadMore = () => {
     if (hasNextPage) {
       fetchNextPage();
