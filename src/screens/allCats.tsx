@@ -26,7 +26,7 @@ export const AllCats = () => {
           <ScreenLoader />
         ) : (
           <FlatList
-            data={data?.pages?.flat()}
+            data={data}
             renderItem={CatListItem}
             showsVerticalScrollIndicator={false}
             getItemLayout={getItemLayout(CatListItemHeight)}

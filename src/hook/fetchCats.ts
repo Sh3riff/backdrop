@@ -11,7 +11,7 @@ export const useFetchCats = (pageLimit: number = 16) => {
       )
       .then(response => response.data)
       .catch(err => err);
-  return useInfiniteQuery(['cats'], axiosFetchCat, {
+  const queryValues = useInfiniteQuery(['cats'], axiosFetchCat, {
     /**
      * pages is the number of request made
      * lastpage is the last request made
@@ -23,4 +23,8 @@ export const useFetchCats = (pageLimit: number = 16) => {
       return null;
     },
   });
+  return {
+    ...queryValues,
+    data: queryValues.data?.pages?.flat()
+  };
 };

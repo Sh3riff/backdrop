@@ -15,10 +15,7 @@ export const FavCats = () => {
   const {isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage} =
     useFetchFavoriteCats();
 
-  const favList = data?.pages?.flat();
   const numberOfColums = 2;
-
-  console.log('favList', favList)
 
   const loadMore = () => {
     if (hasNextPage) {
@@ -31,11 +28,11 @@ export const FavCats = () => {
   return (
     <ScreenLayout title="Cats I Like">
       <View style={styles.view}>
-        {!favList || !favList.length ? (
+        {!data || !data.length ? (
           <EmptyScreen />
         ) : (
           <FlatList
-            data={favList}
+            data={data}
             renderItem={FaveCatCard}
             showsVerticalScrollIndicator={false}
             numColumns={numberOfColums}
