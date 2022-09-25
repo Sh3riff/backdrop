@@ -23,8 +23,6 @@ export const FavCats = () => {
         ?.name || 'Unknown Breed',
   }));
 
-  // console.log('dataWithName', dataWithName[0]) // image_id || image.id
-
   const numberOfColums = 2;
 
   const loadMore = () => {
@@ -35,6 +33,13 @@ export const FavCats = () => {
   if (isLoading) {
     return <ScreenLoader />;
   }
+
+  // This Component is essential to maintain a named
+  // functional component in the flatlist and also
+  // use hooks in the component
+  const FaveCatCardEscapeHookError = ({item}: any) => (
+    <FaveCatCard item={item} />
+  );
   return (
     <ScreenLayout title="Cats I Like">
       <View style={styles.view}>
@@ -43,7 +48,7 @@ export const FavCats = () => {
         ) : (
           <FlatList
             data={dataWithName}
-            renderItem={FaveCatCard}
+            renderItem={FaveCatCardEscapeHookError}
             showsVerticalScrollIndicator={false}
             numColumns={numberOfColums}
             getItemLayout={getItemLayout(FaveCatCardHeight, numberOfColums)}

@@ -15,3 +15,14 @@ export const useAddFavoriteCats = () => {
     onSuccess: () => queryclient.invalidateQueries(['favoriteCats']),
   });
 };
+
+export const useDeleteFavoriteCats = () => {
+  const queryclient = useQueryClient();
+  const updateFavorite = (id: string) =>
+    axios.delete(`https://api.thecatapi.com/v1/favourites/${id}`, {
+      headers: {'x-api-key': Config.CAT_API_KEY},
+    });
+  return useMutation(updateFavorite, {
+    onSuccess: () => queryclient.invalidateQueries(['favoriteCats']),
+  });
+};

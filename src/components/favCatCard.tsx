@@ -1,10 +1,18 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, View, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  Dimensions,
+} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {LoveIcon} from '~assets/svg';
+import {useDeleteFavoriteCats} from '~hook';
 
 type ICatListItem = {
   item: {
+    id: string;
     name: string;
     image: {
       id: string;
@@ -21,12 +29,14 @@ const marginBottom = 25;
 export const FaveCatCardHeight = imageLength + textHeight + marginBottom;
 
 export const FaveCatCard = ({item}: ICatListItem) => {
-  const {id, url} = item.image;
+  const {mutate: deleteFavCat, error} = useDeleteFavoriteCats();
   return (
-    <TouchableOpacity style={{marginBottom}}>
+    <TouchableOpacity
+      style={{marginBottom}}
+      onPress={() => deleteFavCat(item.id)}>
       <FastImage
         style={[styles.image, {width: imageLength, height: imageLength}]}
-        source={{uri: url}}
+        source={{uri: item?.image?.url}}
         resizeMode={FastImage.resizeMode.cover}
       />
       <View style={styles.infoArea}>
