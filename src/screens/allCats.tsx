@@ -19,6 +19,13 @@ export const AllCats = () => {
       fetchNextPage();
     }
   };
+
+  // This Component is essential to maintain a named
+  // functional component in the flatlist and also
+  // use hooks in the component
+  const CatListItemEscapeHookError = ({item}: any) => (
+    <CatListItem item={item} />
+  );
   return (
     <ScreenLayout title="All Cats">
       <View style={styles.view}>
@@ -27,7 +34,7 @@ export const AllCats = () => {
         ) : (
           <FlatList
             data={data}
-            renderItem={CatListItem}
+            renderItem={CatListItemEscapeHookError}
             showsVerticalScrollIndicator={false}
             getItemLayout={getItemLayout(CatListItemHeight)}
             keyExtractor={(item: any) => item.id}

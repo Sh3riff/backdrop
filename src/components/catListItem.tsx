@@ -2,9 +2,11 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {LoveIcon} from '~assets/svg';
+import {useFetchCats, useAddFavoriteCats} from '~hook';
 
 type ICatListItem = {
   item: {
+    id: string;
     url: string;
     breeds?: {name: string}[];
   };
@@ -16,12 +18,13 @@ const marginBottom = 20;
 export const CatListItemHeight = ImageLength + marginBottom;
 
 export const CatListItem = ({item}: ICatListItem) => {
+  const {mutate} = useAddFavoriteCats();
   // FastImage.resizeMode.cover
-  const {url, breeds} = item;
-  const name = breeds?.length ? breeds[0].name : 'No Name';
+  const {url, breeds, id} = item;
+  const name = breeds?.length ? breeds[0].name : 'Unknown Breed';
   const isLiked = false;
   return (
-    <TouchableOpacity style={styles.touch}>
+    <TouchableOpacity style={styles.touch} onPress={() => mutate(id)}>
       <View style={styles.infoArea}>
         <FastImage
           style={styles.image}
