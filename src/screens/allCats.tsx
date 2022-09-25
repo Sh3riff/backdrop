@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import {
   ScreenLayout,
   CatListItem,
@@ -11,7 +11,8 @@ import {useFetchCats} from '~hook';
 import {getItemLayout} from '~utils';
 
 export const AllCats = () => {
-  const {isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage} = useFetchCats();
+  const {isLoading, data, hasNextPage, fetchNextPage, isFetchingNextPage} =
+    useFetchCats();
 
   const loadMore = () => {
     if (hasNextPage) {
