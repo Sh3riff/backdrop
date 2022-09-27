@@ -37,7 +37,10 @@ export const CatListItem = ({item}: ICatListItem) => {
     }
   };
   return (
-    <TouchableOpacity style={styles.touch} onPress={updateFavCat}>
+    <TouchableOpacity
+      style={styles.touch}
+      onPress={updateFavCat}
+      testID="CatListItem">
       <View style={styles.infoArea}>
         <FastImage
           style={styles.image}
