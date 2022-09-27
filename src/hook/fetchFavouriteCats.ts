@@ -26,8 +26,9 @@ export const useFetchFavoriteCats = (pageLimit: number = 16) => {
     cacheTime: fiveHours,
     staleTime: fiveHours,
   });
+  const flatPages: any = queryValues.data?.pages || [];
   return {
     ...queryValues,
-    data: queryValues.data?.pages?.flat(),
+    data: flatPages.flat(),
   };
 };

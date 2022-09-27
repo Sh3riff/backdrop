@@ -23,8 +23,10 @@ export const useFetchCats = (pageLimit: number = 16) => {
       return null;
     },
   });
+
+  const flatPages: any = queryValues.data?.pages || [];
   return {
     ...queryValues,
-    data: queryValues.data?.pages?.flat()
+    data: flatPages.flat(),
   };
 };
