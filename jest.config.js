@@ -13,7 +13,10 @@ module.exports = {
     ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  setupFilesAfterEnv: [
+    '@testing-library/jest-native/extend-expect',
+    './jest.setup.js',
+  ],
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',
   ],

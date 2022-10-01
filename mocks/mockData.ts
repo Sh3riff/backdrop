@@ -1,4 +1,4 @@
-const data1 = [
+export const data1 = [
   {
     breeds: [],
     id: 'sLWdodu_-',
@@ -81,7 +81,7 @@ const data1 = [
   },
 ];
 
-const data2 = [
+export const data2 = [
   {
     breeds: [{name: 'York Chocolate'}],
     id: '7_rjG2-pc',
@@ -101,7 +101,7 @@ const data2 = [
   },
 ];
 
-const favs = [
+export const favs = [
   {
     id: 100081113,
     user_id: 'sy2dbp',

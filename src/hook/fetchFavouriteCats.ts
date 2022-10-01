@@ -1,14 +1,14 @@
 import {useInfiniteQuery} from 'react-query';
-import axios from 'axios';
-import Config from 'react-native-config';
+import {getAxiosInstance} from '~utils';
 
 export const useFetchFavoriteCats = (pageLimit: number = 16) => {
   const fiveHours = 5 * 60 * 60 * 1000;
+
+  const axios = getAxiosInstance();
   const axiosFetchCat = ({pageParam = 0}) =>
     axios
       .get(
-        `https://api.thecatapi.com/v1/favourites?limit=${pageLimit}&page=${pageParam}&order=DESC`,
-        {headers: {'x-api-key': Config.CAT_API_KEY}},
+        `https://api.thecatapi.com/v1/favourites?limit=${pageLimit}&page=${pageParam}&order=DESC`
       )
       .then(response => response.data)
       .catch(err => err);

@@ -43,6 +43,7 @@ export const AllCats = () => {
             onEndReached={loadMore}
             onEndReachedThreshold={0.6}
             ListFooterComponent={isFetchingNextPage ? ListLoader : null}
+            testID="AllCatsList"
           />
         )}
       </View>

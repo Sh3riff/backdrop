@@ -1,16 +1,13 @@
 import {useMutation, useQueryClient} from 'react-query';
-import axios from 'axios';
-import Config from 'react-native-config';
+import {getAxiosInstance} from '~utils';
 
 export const useAddFavoriteCats = () => {
   const queryclient = useQueryClient();
 
+  const axios = getAxiosInstance();
+
   const updateFavorite = (id: string) =>
-    axios.post(
-      `https://api.thecatapi.com/v1/favourites`,
-      {image_id: id},
-      {headers: {'x-api-key': Config.CAT_API_KEY}},
-    );
+    axios.post(`https://api.thecatapi.com/v1/favourites`, {image_id: id});
   return useMutation(updateFavorite, {
     onSuccess: () => queryclient.invalidateQueries(['favoriteCats']),
   });
@@ -18,10 +15,9 @@ export const useAddFavoriteCats = () => {
 
 export const useDeleteFavoriteCats = () => {
   const queryclient = useQueryClient();
+  const axios = getAxiosInstance();
   const updateFavorite = (id: string) =>
-    axios.delete(`https://api.thecatapi.com/v1/favourites/${id}`, {
-      headers: {'x-api-key': Config.CAT_API_KEY},
-    });
+    axios.delete(`https://api.thecatapi.com/v1/favourites/${id}`);
   return useMutation(updateFavorite, {
     onSuccess: () => queryclient.invalidateQueries(['favoriteCats']),
   });

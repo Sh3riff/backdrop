@@ -1,13 +1,12 @@
 import {useInfiniteQuery} from 'react-query';
-import axios from 'axios';
-import Config from 'react-native-config';
+import {getAxiosInstance} from '~utils';
 
 export const useFetchCats = (pageLimit: number = 16) => {
+  const axios = getAxiosInstance();
   const axiosFetchCat = ({pageParam = 0}) =>
     axios
       .get(
-        `https://api.thecatapi.com/v1/images/search?limit=${pageLimit}&page=${pageParam}&order=DESC&has_breeds=1`,
-        {headers: {'x-api-key': Config.CAT_API_KEY}},
+        `https://api.thecatapi.com/v1/images/search?limit=${pageLimit}&page=${pageParam}&order=DESC&has_breeds=1`
       )
       .then(response => response.data)
       .catch(err => err);
@@ -29,4 +28,4 @@ export const useFetchCats = (pageLimit: number = 16) => {
     ...queryValues,
     data: flatPages.flat(),
   };
-};
+}; 
